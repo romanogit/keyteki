@@ -68,4 +68,33 @@ describe('Shoulder Id', function () {
             expect(this.player2.amber).toBe(5);
         });
     });
+
+    describe('Shoulder Id and Gargantodon interaction', function () {
+        beforeEach(function () {
+            this.setupTest({
+                player1: {
+                    amber: 3,
+                    house: 'untamed',
+                    inPlay: ['fuzzy-gruen', 'gargantodon'],
+                    hand: ['way-of-the-porcupine']
+                },
+                player2: {
+                    amber: 4,
+                    inPlay: ['shoulder-id']
+                }
+            });
+        });
+
+        it('should capture 1 amber instead of dealing defense damage', function () {
+            this.player1.fightWith(this.fuzzyGruen, this.shoulderId);
+            expect(this.player1).toBeAbleToSelect(this.fuzzyGruen);
+            expect(this.player1).toBeAbleToSelect(this.gargantodon);
+            expect(this.player1).not.toBeAbleToSelect(this.shoulderId);
+            this.player1.clickCard(this.gargantodon);
+            expect(this.player1.amber).toBe(2);
+            expect(this.player2.amber).toBe(4);
+            expect(this.gargantodon.amber).toBe(1);
+            expect(this.player1).toHavePrompt('Choose a card to play, discard or use');
+        });
+    });
 });
