@@ -1,5 +1,5 @@
 describe('Lateral Shift', function () {
-    describe("Lateral Shift's omni ability", function () {
+    describe("Lateral Shift's ability", function () {
         beforeEach(function () {
             this.setupTest({
                 player1: {
@@ -100,6 +100,57 @@ describe('Lateral Shift', function () {
             this.player1.clickCard(this.spyyyder);
             expect(this.collarOfSubordination.controller).toBe(this.player1.player);
             expect(this.spyyyder.controller).toBe(this.player1.player);
+        });
+    });
+
+    describe('Lateral Shift and onAbilityInitiated events', function () {
+        beforeEach(function () {
+            this.setupTest({
+                player1: {
+                    house: 'brobnar',
+                    amber: 2,
+                    inPlay: ['troll'],
+                    hand: ['lateral-shift', 'murkens', 'troll'],
+                    discard: ['anger', 'relentless-assault']
+                },
+                player2: {
+                    amber: 4,
+                    inPlay: ['dextre'],
+                    discard: ['virtuous-works', 'flaxia', 'infighting'],
+                    hand: ['mimicry', 'mimic-gel', 'shield-of-justice']
+                }
+            });
+        });
+
+        it("Mimicry should play from opponent's discard", function () {
+            this.player1.play(this.lateralShift);
+            for (let card of this.player2.player.hand) {
+                expect(this.player1.game.isCardVisible(card, this.player1.player)).toBe(true);
+            }
+            this.player1.clickCard(this.mimicry);
+            expect(this.player1).toBeAbleToSelect(this.virtuousWorks);
+            expect(this.player1).toBeAbleToSelect(this.infighting);
+            expect(this.player1).not.toBeAbleToSelect(this.shieldOfJustice);
+            expect(this.player1).not.toBeAbleToSelect(this.flaxia);
+            expect(this.player1).not.toBeAbleToSelect(this.anger);
+            expect(this.player1).not.toBeAbleToSelect(this.relentlessAssault);
+            this.player1.clickCard(this.virtuousWorks);
+            expect(this.player1.amber).toBe(5);
+        });
+
+        it("Mimic Gel should play on player's side", function () {
+            this.player1.play(this.lateralShift);
+            for (let card of this.player2.player.hand) {
+                expect(this.player1.game.isCardVisible(card, this.player1.player)).toBe(true);
+            }
+            this.player1.clickCard(this.mimicGel);
+            expect(this.player1).toBeAbleToSelect(this.troll);
+            expect(this.player1).toBeAbleToSelect(this.dextre);
+            this.player1.clickCard(this.dextre);
+            this.player1.clickPrompt('Left');
+            expect(this.player2.amber).toBe(3);
+            expect(this.mimicGel.amber).toBe(1);
+            expect(this.mimicGel.controller).toBe(this.player1.player);
         });
     });
 });

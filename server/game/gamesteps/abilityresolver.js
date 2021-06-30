@@ -73,6 +73,7 @@ class AbilityResolver extends BaseStepWithPipeline {
 
         this.game.raiseEvent('onAbilityInitiated', {
             context: this.context,
+            player: this.context.player,
             noGameStateCheck: true
         });
     }

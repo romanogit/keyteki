@@ -54,8 +54,8 @@ class TriggeredAbility extends CardAbility {
         if (
             this.useEventPlayer ||
             (!this.isLastingAbilityTrigger &&
-                event.name === 'onCardPlayed' &&
-                this.card.type === 'action')
+                (event.name === 'onAbilityInitiated' ||
+                    (event.name === 'onCardPlayed' && this.card.type === 'action')))
         ) {
             player = event.player;
         } else if (this.triggeredByOpponent) {
