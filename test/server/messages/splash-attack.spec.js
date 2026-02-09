@@ -14,10 +14,10 @@ describe('Splash-Attack Messages', function () {
 
         it('should log fight message when splash-attack creature fights', function () {
             this.player1.fightWith(this.chasmVespid, this.gangerChieftain);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 uses Chasm Vespid to make Chasm Vespid fight Ganger Chieftain'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

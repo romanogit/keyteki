@@ -12,11 +12,11 @@ describe('Reveal Messages', function () {
 
         it('should log correct message when revealing hand', function () {
             this.player1.play(this.theVisibleHand);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 plays The Visible Hand',
                 'player1 uses The Visible Hand to make 2 token creatures; and reveal Dextre'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

@@ -191,23 +191,29 @@ class CardAbility extends ThenAbility {
             return;
         }
 
+        // Skip actions that handle their own messaging during execution
+        const messagingActions = gameActions.filter((ga) => !ga.defersMessage);
+        if (messagingActions.length === 0) {
+            return;
+        }
+
         let messageArgs = this.getMessageArgs(
             context,
-            gameActions[0].effectMsg,
-            [gameActions[0].target],
-            gameActions[0].effectArgs
+            messagingActions[0].effectMsg,
+            [messagingActions[0].target],
+            messagingActions[0].effectArgs
         );
 
         if (this.properties.effectStyle === 'append') {
-            for (let i = 1; i < gameActions.length; ++i) {
-                const gameAction = gameActions[i];
+            for (let i = 1; i < messagingActions.length; ++i) {
+                const gameAction = messagingActions[i];
                 messageArgs = this.getMessageArgs(
                     context,
                     gameAction.effectMsg,
                     [gameAction.target],
                     gameAction.effectArgs,
                     messageArgs,
-                    i === gameActions.length - 1
+                    i === messagingActions.length - 1
                 );
             }
         }

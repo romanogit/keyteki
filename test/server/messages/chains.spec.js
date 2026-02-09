@@ -12,11 +12,11 @@ describe('Chains Messages', function () {
 
         it('should log correct message when opponent gains chains', function () {
             this.player1.play(this.bindingIrons);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 plays Binding Irons',
                 'player1 uses Binding Irons to give player2 3 chains'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

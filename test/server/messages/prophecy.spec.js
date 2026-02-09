@@ -15,10 +15,10 @@ describe('Prophecy Messages', function () {
 
         it('should log correct message when activating a prophecy', function () {
             this.player1.activateProphecy(this.expectTheUnexpected, this.ancientBear);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 activates their prophecy Expect the Unexpected'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 
@@ -46,6 +46,7 @@ describe('Prophecy Messages', function () {
             this.player2.play(this.spooKeyCharge);
             // Prophecy triggers, select creature for fate effect
             this.player2.clickCard(this.umbra);
+            expect(this.player2).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 activates their prophecy Expect the Unexpected',
                 'player1 draws 6 cards to refill their hand to 6 cards',
@@ -57,7 +58,6 @@ describe('Prophecy Messages', function () {
                 'player1 uses Expect the Unexpected to fulfill its prophecy',
                 'player1 resolves the fate effect of Parasitic Arachnoid'
             ]);
-            expect(this.player2).isReadyToTakeAction();
         });
     });
 
@@ -82,6 +82,7 @@ describe('Prophecy Messages', function () {
 
         it('should log correct message when prophecy is fulfilled without fate effect', function () {
             this.player2.play(this.spooKeyCharge);
+            expect(this.player2).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 activates their prophecy Expect the Unexpected',
                 'player1 draws 6 cards to refill their hand to 6 cards',
@@ -93,7 +94,6 @@ describe('Prophecy Messages', function () {
                 'player1 uses Expect the Unexpected to fulfill its prophecy',
                 'player1 resolves the fate effect of Ancient Bear'
             ]);
-            expect(this.player2).isReadyToTakeAction();
         });
     });
 });

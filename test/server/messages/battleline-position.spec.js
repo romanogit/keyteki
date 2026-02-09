@@ -13,11 +13,11 @@ describe('Battleline Position Messages', function () {
         it('should log correct message when swapping creatures', function () {
             this.player1.reap(this.sanctumGuardian);
             this.player1.clickCard(this.dextre);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 uses Sanctum Guardian to reap with Sanctum Guardian',
                 'player1 uses Sanctum Guardian to swap the position of Dextre and Sanctum Guardian'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 
@@ -38,11 +38,11 @@ describe('Battleline Position Messages', function () {
             this.player1.play(this.tyxlBeambuckler);
             this.player1.clickCard(this.troll);
             this.player1.clickPrompt('Left');
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 plays Tyxl Beambuckler',
                 'player1 uses Tyxl Beambuckler to deal 2 damage to Troll and move it to a flank'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

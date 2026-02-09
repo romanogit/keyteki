@@ -13,11 +13,11 @@ describe('Exalt Messages', function () {
         it('should log exalt message', function () {
             this.player1.play(this.senatorShrix);
             this.player1.clickCard(this.senatorShrix);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 plays Senator Shrix',
                 'player1 uses Senator Shrix to exalt Senator Shrix'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

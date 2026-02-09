@@ -16,6 +16,7 @@ describe('Omega Messages', function () {
         it('should log play message for omega card', function () {
             this.player1.play(this.unlockedGateway);
             this.player2.clickPrompt('brobnar');
+            expect(this.player2).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 plays Unlocked Gateway',
                 'player1 uses Unlocked Gateway to destroy Ember Imp and Troll',
@@ -27,7 +28,6 @@ describe('Omega Messages', function () {
                 'player2 does not forge a key.  They have 0 amber.  The current cost is 6 amber ',
                 'player2 chooses brobnar as their active house this turn'
             ]);
-            expect(this.player2).isReadyToTakeAction();
         });
     });
 });

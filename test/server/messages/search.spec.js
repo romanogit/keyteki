@@ -15,13 +15,13 @@ describe('Search Messages', function () {
             this.player1.play(this.helpFromFutureSelf);
             this.player1.clickCard(this.timetraveller);
             this.player1.clickPrompt('Done');
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 plays Help from Future Self',
                 "player1 gains an amber due to Help from Future Self's bonus icon",
                 'player1 uses Help from Future Self to search for Timetraveller and shuffle discard into their deck',
                 'player1 takes Timetraveller into their hand'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

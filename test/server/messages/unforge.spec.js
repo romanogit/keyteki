@@ -13,12 +13,12 @@ describe('Unforge Messages', function () {
         it('should log correct message when unforging a key', function () {
             this.player2.player.keys = { red: true, blue: false, yellow: false };
             this.player1.play(this.turnkey);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 plays Turnkey',
                 'player1 uses Turnkey to cause player2 to unforge a key',
                 "player1 unforges player2's forgedkeyred"
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

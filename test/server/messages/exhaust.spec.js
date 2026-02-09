@@ -16,12 +16,12 @@ describe('Exhaust Messages', function () {
             this.player1.play(this.nocturnalManeuver);
             this.player1.clickCard(this.dextre);
             this.player1.clickPrompt('Done');
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 plays Nocturnal Maneuver',
                 "player1 gains an amber due to Nocturnal Maneuver's bonus icon",
                 'player1 uses Nocturnal Maneuver to exhaust Dextre'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

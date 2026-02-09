@@ -14,12 +14,12 @@ describe('Hazardous Messages', function () {
 
         it('should log fight message when attacking hazardous creature', function () {
             this.player1.fightWith(this.troll, this.briarGrubbling);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 uses Troll to make Troll fight Briar Grubbling',
                 'player2 uses Briar Grubbling to deal 5 damage to Troll',
                 'Briar Grubbling is destroyed'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

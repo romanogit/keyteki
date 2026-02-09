@@ -14,13 +14,13 @@ describe('Assault Messages', function () {
 
         it('should log damage message when assault creature fights', function () {
             this.player1.fightWith(this.shorty, this.dodger);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 uses Shorty to make Shorty fight Dodger',
                 'player1 uses Shorty to deal 4 damage to Dodger',
                 'Shorty is destroyed',
                 'Dodger is destroyed'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

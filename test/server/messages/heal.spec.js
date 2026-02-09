@@ -14,11 +14,11 @@ describe('Heal Messages', function () {
         it('should log correct message when healing a creature', function () {
             this.player1.reap(this.greyMonk);
             this.player1.clickCard(this.championTabris);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 uses Grey Monk to reap with Grey Monk',
                 'player1 uses Grey Monk to heal Champion Tabris for 2 damage'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

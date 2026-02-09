@@ -12,11 +12,11 @@ describe('Action Ability Messages', function () {
 
         it('should log correct message when using artifact Action ability', function () {
             this.player1.useAction(this.libraryOfBabble);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 uses Library of Babble to draw 1 card',
                 'player1 draws 1 card'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 
@@ -35,10 +35,10 @@ describe('Action Ability Messages', function () {
 
         it('should log correct message when using creature Action ability', function () {
             this.player1.useAction(this.pitDemon);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 uses Pit Demon to steal 1 amber from player2'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

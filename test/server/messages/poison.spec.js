@@ -14,11 +14,11 @@ describe('Poison Messages', function () {
 
         it('should log fight message when poison creature fights', function () {
             this.player1.fightWith(this.macisAsp, this.troll);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 uses Macis Asp to make Macis Asp fight Troll',
                 'Troll is destroyed'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

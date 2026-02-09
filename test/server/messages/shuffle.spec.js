@@ -12,11 +12,11 @@ describe('Shuffle Messages', function () {
 
         it('should log correct message when shuffling card into deck', function () {
             this.player1.reap(this.mabTheMad);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 uses Mab the Mad to reap with Mab the Mad',
                 "player1 uses Mab the Mad to return Mab the Mad to their owner's deck"
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 
@@ -59,6 +59,7 @@ describe('Shuffle Messages', function () {
         it('should log correct message when action causes draw from empty deck', function () {
             this.player1.player.deck = [];
             this.player1.play(this.timetraveller);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 plays Timetraveller',
                 "player1 gains an amber due to Timetraveller's bonus icon",
@@ -66,7 +67,6 @@ describe('Shuffle Messages', function () {
                 'player1 attempts to draw with an empty deck, so they shuffle their discard pile to reset their deck',
                 'player1 draws 2 cards'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

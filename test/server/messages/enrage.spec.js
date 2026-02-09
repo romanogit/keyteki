@@ -15,12 +15,12 @@ describe('Enrage Messages', function () {
         it('should log correct message when enraging a creature', function () {
             this.player1.play(this.pesteringBlow);
             this.player1.clickCard(this.troll);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 plays Pestering Blow',
                 "player1 gains an amber due to Pestering Blow's bonus icon",
                 'player1 uses Pestering Blow to deal 1 damage and enrage Troll'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

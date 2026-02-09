@@ -15,13 +15,13 @@ describe('Destroy Messages', function () {
         it('should log correct message when explicitly destroying a creature', function () {
             this.player1.play(this.sauryAboutThat);
             this.player1.clickCard(this.troll);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 plays Saury About That',
                 'player1 uses Saury About That to destroy Troll',
                 'Troll is destroyed',
                 'player2 gains 1 amber from Saury About That'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 
@@ -40,11 +40,11 @@ describe('Destroy Messages', function () {
 
         it('should log correct message when destroying a creature from fight', function () {
             this.player1.fightWith(this.troll, this.emberImp);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 uses Troll to make Troll fight Ember Imp',
                 'Ember Imp is destroyed'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 
@@ -64,13 +64,13 @@ describe('Destroy Messages', function () {
         it('should log correct message when dealing lethal damage from action', function () {
             this.player1.play(this.punch);
             this.player1.clickCard(this.emberImp);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 plays Punch',
                 "player1 gains an amber due to Punch's bonus icon",
                 'player1 uses Punch to deal 3 damage to Ember Imp',
                 'Ember Imp is destroyed'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

@@ -14,10 +14,10 @@ describe('Invulnerable Messages', function () {
 
         it('should log fight message when attacking invulnerable creature', function () {
             this.player1.fightWith(this.troll, this.nizakTheForgotten);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 uses Troll to make Troll fight Nizak, The Forgotten'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

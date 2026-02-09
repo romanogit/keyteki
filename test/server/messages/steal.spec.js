@@ -14,11 +14,11 @@ describe('Steal Messages', function () {
 
         it('should log correct message when stealing amber', function () {
             this.player1.playCreature(this.urchin);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 plays Urchin',
                 'player1 uses Urchin to steal 1 amber from player2'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

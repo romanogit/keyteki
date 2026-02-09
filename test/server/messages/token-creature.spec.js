@@ -12,12 +12,12 @@ describe('Token Creature Messages', function () {
 
         it('should log correct message when making a token creature', function () {
             this.player1.play(this.touristTrap);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 plays Tourist Trap',
                 'player1 plays Tourist Trap',
                 'player1 uses Tourist Trap to make a token creature'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

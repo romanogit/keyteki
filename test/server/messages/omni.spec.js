@@ -12,11 +12,11 @@ describe('Omni Ability Messages', function () {
 
         it('should log correct message when using omni ability from different house', function () {
             this.player1.useOmni(this.ornateTalkingTray);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 uses Ornate Talking Tray to destroy Ornate Talking Tray and make a token creature',
                 'Ornate Talking Tray is destroyed'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

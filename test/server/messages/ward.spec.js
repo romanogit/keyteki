@@ -13,8 +13,8 @@ describe('Ward Messages', function () {
         it('should log correct message when warding a creature', function () {
             this.player1.useAction(this.hologrammophone);
             this.player1.clickCard(this.dextre);
-            expect(this).toHaveAllChatMessagesBe(['player1 uses Hologrammophone to ward Dextre']);
             expect(this.player1).isReadyToTakeAction();
+            expect(this).toHaveAllChatMessagesBe(['player1 uses Hologrammophone to ward Dextre']);
         });
     });
 
@@ -34,11 +34,11 @@ describe('Ward Messages', function () {
 
         it('should log correct message when ward prevents damage', function () {
             this.player1.fightWith(this.troll, this.dextre);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 uses Troll to make Troll fight Dextre',
                 "Dextre's ward token prevents the damage dealt by Troll and is discarded"
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 
@@ -58,12 +58,12 @@ describe('Ward Messages', function () {
 
         it('should log correct message when ward prevents destroy', function () {
             this.player1.play(this.gatewayToDis);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 plays Gateway to Dis',
                 'player1 uses Gateway to Dis to destroy all creatures and gain 3 chains',
                 'player2 uses Dextre to remove its ward token'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 
@@ -84,12 +84,12 @@ describe('Ward Messages', function () {
         it('should log correct message when ward prevents return to hand', function () {
             this.player1.play(this.fear);
             this.player1.clickCard(this.dextre);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 plays Fear',
                 'player1 uses Fear to return Dextre to their hand',
                 'player2 uses Dextre to remove its ward token'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 
@@ -110,13 +110,13 @@ describe('Ward Messages', function () {
         it('should log correct message when ward prevents purge', function () {
             this.player1.play(this.harvestTime);
             this.player1.selectTrait('Mutant');
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 plays Harvest Time',
                 'player1 chooses trait Mutant',
                 'player1 uses Harvest Time to purge all cards with the Mutant trait and each player gains amber equal to the number of their cards purged',
                 'player2 uses Dysania to remove its ward token'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 
@@ -137,13 +137,13 @@ describe('Ward Messages', function () {
         it('should log correct message when ward prevents archive', function () {
             this.player1.play(this.hoistOperations);
             this.player1.clickCard(this.dextre);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 plays Hoist Operations',
                 "player1 gains an amber due to Hoist Operations's bonus icon",
                 'player1 uses Hoist Operations to archive Dextre',
                 'player2 uses Dextre to remove its ward token'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 
@@ -164,11 +164,11 @@ describe('Ward Messages', function () {
         it('should log correct message when ward prevents put under card', function () {
             this.player1.useAction(this.soulLock);
             this.player1.clickCard(this.dextre);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 uses Soul Lock',
                 'player2 uses Dextre to remove its ward token'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

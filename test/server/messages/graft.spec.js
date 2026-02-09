@@ -15,11 +15,11 @@ describe('Graft Messages', function () {
         it('should log graft message when grafting a card', function () {
             this.player1.play(this.infomancer);
             this.player1.clickCard(this.berserkerSlam);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 plays Infomancer',
                 'player1 uses Infomancer to graft Berserker Slam onto Infomancer'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
 
         it('should log message when using grafted card effect', function () {
@@ -32,6 +32,7 @@ describe('Graft Messages', function () {
             this.player1.reap(this.infomancer);
             this.player1.clickCard(this.berserkerSlam);
             this.player1.clickCard(this.troll);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 plays Infomancer',
                 'player1 uses Infomancer to graft Berserker Slam onto Infomancer',
@@ -49,7 +50,6 @@ describe('Graft Messages', function () {
                 'player1 uses Infomancer to trigger the play effect of Berserker Slam',
                 'player1 uses Berserker Slam to deal 4 damage to Troll'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

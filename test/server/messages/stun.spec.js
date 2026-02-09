@@ -14,12 +14,12 @@ describe('Stun Messages', function () {
 
         it('should log correct message when stunning a creature', function () {
             this.player1.play(this.radiantTruth);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 plays Radiant Truth',
                 "player1 gains an amber due to Radiant Truth's bonus icon",
                 'player1 uses Radiant Truth to stun Ganger Chieftain'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 
@@ -38,8 +38,8 @@ describe('Stun Messages', function () {
         it('should log correct message when removing stun', function () {
             this.player1.clickCard(this.troll);
             this.player1.clickPrompt("Remove this creature's stun");
-            expect(this).toHaveAllChatMessagesBe(['player1 exhausts Troll to remove its stun']);
             expect(this.player1).isReadyToTakeAction();
+            expect(this).toHaveAllChatMessagesBe(['player1 exhausts Troll to remove its stun']);
         });
     });
 });

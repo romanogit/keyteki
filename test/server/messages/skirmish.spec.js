@@ -14,10 +14,10 @@ describe('Skirmish Messages', function () {
 
         it('should log fight message when skirmish creature fights', function () {
             this.player1.fightWith(this.umbra, this.gangerChieftain);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 uses Umbra to make Umbra fight Ganger Chieftain'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });

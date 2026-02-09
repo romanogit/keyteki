@@ -12,11 +12,11 @@ describe('Draw Messages', function () {
 
         it('should log correct message when drawing a card', function () {
             this.player1.useAction(this.libraryOfBabble);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 uses Library of Babble to draw 1 card',
                 'player1 draws 1 card'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 
@@ -33,13 +33,13 @@ describe('Draw Messages', function () {
 
         it('should log correct message when drawing multiple cards', function () {
             this.player1.play(this.timetraveller);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 plays Timetraveller',
                 "player1 gains an amber due to Timetraveller's bonus icon",
                 'player1 uses Timetraveller to draw 2 cards',
                 'player1 draws 2 cards'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 

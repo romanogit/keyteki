@@ -12,10 +12,10 @@ describe('Reap Messages', function () {
 
         it('should log correct message when reaping', function () {
             this.player1.reap(this.gangerChieftain);
+            expect(this.player1).isReadyToTakeAction();
             expect(this).toHaveAllChatMessagesBe([
                 'player1 uses Ganger Chieftain to reap with Ganger Chieftain'
             ]);
-            expect(this.player1).isReadyToTakeAction();
         });
     });
 });
